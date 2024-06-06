@@ -1,29 +1,36 @@
-import TextInput from "@/components/TextInput";
-import { Colors } from "@/constants/Colors";
-import { styles } from "@/styles";
-import { Pressable } from "react-native";
-import { Text, View } from "react-native";
+import * as React from 'react'
+import Button from '@/components/Button'
+import TextInput from '@/components/TextInput'
+import {Colors} from '@/constants/Colors'
+import {View} from 'react-native'
 
 export default function Login() {
   return (
     <View
       style={{
-         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <TextInput placeholder="Email" />
-      <TextInput placeholder="Password" />
+        borderColor: Colors.brand.OceanBreeze,
+        borderWidth: 2,
+        borderRadius: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 30,
+        gap: 20,
+        shadowColor: Colors.brand.OceanBreeze,
+        shadowOffset: {width: 2, height: 2},
+        shadowOpacity: 0.4,
+        shadowRadius: 3,
+      }}>
+      <TextInput
+        placeholder="Enter email"
+        accessibilityLabel="input"
+        accessibilityHint="email"
+      />
+      <TextInput
+        placeholder="Enter password"
+        accessibilityLabel="input"
+        accessibilityHint="password"
+      />
 
-      <Pressable
-        onPress={() => {
-        }}
-      >
-        <Text>Login</Text>
-      </Pressable>
-
-
+      <Button title="Login" />
     </View>
-  );
+  )
 }

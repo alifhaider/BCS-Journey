@@ -1,14 +1,21 @@
-import { Colors } from "@/constants/Colors";
-import { StyleSheet } from "react-native";
+import {Colors} from '@/constants/Colors'
+import {StyleSheet} from 'react-native'
 
 export const styles = StyleSheet.create({
+  headerLarge: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: Colors.brand.SunriseGlow,
+    textAlign: 'center',
+    marginVertical: 40,
+  },
   primaryButton: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     color: Colors.brand.LavendarMist,
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     backgroundColor: Colors.brand.CirtusBurst,
     paddingVertical: 10,
     paddingHorizontal: 30,
@@ -30,6 +37,6 @@ export const styles = StyleSheet.create({
   primaryText: {
     color: Colors.brand.CoralSunset,
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
-});
+})
