@@ -1,8 +1,7 @@
-import {Text} from 'react-native'
+import {Pressable, Text} from 'react-native'
 import React from 'react'
-import {TouchableOpacity} from 'react-native-gesture-handler'
 import {styles} from '@/styles'
-import {Link} from 'expo-router'
+import { Link } from 'expo-router'
 
 type ButtonProps = {
   href?: string
@@ -10,19 +9,24 @@ type ButtonProps = {
   title: string
 }
 
-const Button = ({href, onPress, title}: ButtonProps) => {
+const Button = ({ onPress, title, href }: ButtonProps) => {
+  if (href) {
+    return (
+      <Link
+        style={styles.primaryButton}
+        href={href}
+        accessibilityRole="link">
+        <Text>{title}</Text>
+      </Link>
+    )
+  }
   return (
-    <>
-      {href ? (
-        <Link href={href} style={styles.primaryButton}>
-          <Text>{title}</Text>
-        </Link>
-      ) : (
-        <TouchableOpacity style={styles.primaryButton} onPress={onPress}>
-          <Text>{title}</Text>
-        </TouchableOpacity>
-      )}
-    </>
+    <Pressable
+      style={styles.primaryButton}
+      onPress={onPress}
+      accessibilityRole="button">
+      <Text>{title}</Text>
+    </Pressable>
   )
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Button from '@/components/Button'
 import {styles} from '@/styles'
 import {Text, View} from 'react-native'
+import Button from '@/components/Button'
 
 export default function Index() {
   return (
@@ -18,8 +18,9 @@ export default function Index() {
           justifyContent: 'center',
           gap: 20,
         }}>
-        <Button href="/login" title="Login" />
-        <Button href="/register" title="Register" />
+        
+        <Button title="Login" href="/login" />
+        <Button title="Register" href="/register" />
       </View>
     </View>
   )

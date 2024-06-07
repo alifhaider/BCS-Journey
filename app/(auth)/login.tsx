@@ -1,24 +1,24 @@
 import * as React from 'react'
+import TextInput from '@/components/TextField'
+import { View} from 'react-native'
 import Button from '@/components/Button'
-import TextInput from '@/components/TextInput'
-import {Colors} from '@/constants/Colors'
-import {View} from 'react-native'
+import { atoms as a } from '@/alf/atoms'
+import {color as t} from '@/alf/tokens'
 
 export default function Login() {
   return (
     <View
-      style={{
-        borderColor: Colors.brand.OceanBreeze,
-        borderWidth: 2,
-        borderRadius: 10,
-        paddingHorizontal: 20,
-        paddingVertical: 30,
-        gap: 20,
-        shadowColor: Colors.brand.OceanBreeze,
-        shadowOffset: {width: 2, height: 2},
-        shadowOpacity: 0.4,
-        shadowRadius: 3,
-      }}>
+      style={[
+        a.border,
+        a.rounded_md,
+        a.px_2xl,
+        a.py_4xl,
+        a.gap_lg,
+        a.shadow_md,
+        a.w_full,
+        {borderColor: t.blue_300}
+      ]
+      }>
       <TextInput
         placeholder="Enter email"
         accessibilityLabel="input"
@@ -29,8 +29,9 @@ export default function Login() {
         accessibilityLabel="input"
         accessibilityHint="password"
       />
-
       <Button title="Login" />
+
+
     </View>
   )
 }

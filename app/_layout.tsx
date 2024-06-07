@@ -1,17 +1,15 @@
 import * as React from 'react'
 import {Colors} from '@/constants/Colors'
-import {DarkTheme, DefaultTheme, ThemeProvider} from '@react-navigation/native'
 import {useFonts} from 'expo-font'
 import {Slot, SplashScreen} from 'expo-router'
 import {useEffect} from 'react'
-import {ScrollView, useColorScheme} from 'react-native'
+import {ScrollView} from 'react-native'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import {SafeAreaView} from 'react-native-safe-area-context'
 
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme()
   const [fontsLoaded, error] = useFonts({
     'Roboto-Regular': require('@/assets/fonts/SpaceMono-Regular.ttf'),
   })
@@ -25,14 +23,12 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView
       style={{flex: 1, backgroundColor: Colors.brand.PassionPlum}}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <SafeAreaView
           style={{height: '100%', backgroundColor: Colors.brand.PassionPlum}}>
           <ScrollView contentContainerStyle={{height: '100%'}}>
             <Slot />
           </ScrollView>
         </SafeAreaView>
-      </ThemeProvider>
     </GestureHandlerRootView>
   )
 }

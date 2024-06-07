@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import {PropsWithChildren, useState} from 'react'
 import {StyleSheet, TouchableOpacity, useColorScheme} from 'react-native'
@@ -16,6 +17,7 @@ export function Collapsible({
   return (
     <ThemedView>
       <TouchableOpacity
+        accessibilityRole="button"
         style={styles.heading}
         onPress={() => setIsOpen(value => !value)}
         activeOpacity={0.8}>

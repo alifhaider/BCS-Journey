@@ -25,8 +25,6 @@ module.exports = {
   },
   ignorePatterns: [
     '**/__mocks__/*.ts',
-    'src/platform/polyfills.ts',
-    'src/third-party',
     'ios',
     'android',
     'coverage',
@@ -34,8 +32,6 @@ module.exports = {
     '.husky',
     'patches',
     '*.html',
-    'src/locale/locales/_build/',
-    'src/locale/locales/**/*.js',
   ],
   settings: {
     componentWrapperFunctions: ['observer'],

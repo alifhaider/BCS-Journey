@@ -4,7 +4,7 @@ import {AntDesign, MaterialIcons} from '@expo/vector-icons'
 import {Tabs} from 'expo-router'
 import {StyleSheet} from 'react-native'
 
-export default function AuthRootLayout() {
+export default function AppRootLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  tabIconActive: {},
 })
 
 type TabIconProps = {
