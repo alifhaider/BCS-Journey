@@ -1,24 +1,19 @@
-import { useInteractionState } from '@/hooks/useInteractionState'
+import {useInteractionState} from '@/hooks/useInteractionState'
 import * as React from 'react'
-import { Text, type TextInputProps, View} from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
-import { } from "@/alf/"
-import { atoms as a } from '@/alf/atoms'
-import { web } from '@/alf/utl/platform'
-
-type TextFieldProps = {
-  error?: string
-  placeholder?: string
-} & React.ComponentProps<typeof TextInput>
-
-
-export type InputProps = Omit<TextInputProps, 'value' | 'onChangeText'> & {
-  label: string
-  value?: string
-  onChangeText?: (value: string) => void
-  isInvalid?: boolean
-  inputRef?: React.RefObject<TextInput>
-}
+import {
+  StyleSheet,
+  Text,
+  type TextInputProps,
+  View,
+  ViewStyle,
+} from 'react-native'
+import {TextInput} from 'react-native-gesture-handler'
+import {} from '@/alf/'
+import {android, atoms as a} from '@/alf'
+import {color as t} from '@/alf/tokens'
+import {web} from '@/alf/util/platform'
+import {HITSLOP_20} from '@/lib/constatnts'
+import {mergeRefs} from '@/lib/mregeRefs'
 
 const Context = React.createContext<{
   inputRef: React.RefObject<TextInput> | null
@@ -40,8 +35,7 @@ const Context = React.createContext<{
   onBlur: () => {},
 })
 
-export type RootProps = React.PropsWithChildren<{ isInvalid?: boolean }>
-
+export type RootProps = React.PropsWithChildren<{isInvalid?: boolean}>
 
 export function Root({children, isInvalid = false}: RootProps) {
   const inputRef = React.useRef<TextInput>(null)
@@ -90,14 +84,148 @@ export function Root({children, isInvalid = false}: RootProps) {
   )
 }
 
+export function useSharedInputStyles() {
+  return React.useMemo(() => {
+    const hover: ViewStyle[] = [
+      {
+        borderColor: t.green_200,
+      },
+    ]
+    const focus: ViewStyle[] = [
+      {
+        borderColor: t.green_200,
+      },
+    ]
+    const error: ViewStyle[] = [
+      {
+        backgroundColor: t.red_300,
+      },
+    ]
+    const errorHover: ViewStyle[] = [
+      {
+        backgroundColor: t.red_300,
+        borderColor: t.red_300,
+      },
+    ]
 
-export default function TextField(props: TextFieldProps) {
-  const { placeholder, ...rest} = props
+    return {
+      chromeHover: StyleSheet.flatten(hover),
+      chromeFocus: StyleSheet.flatten(focus),
+      chromeError: StyleSheet.flatten(error),
+      chromeErrorHover: StyleSheet.flatten(errorHover),
+    }
+  }, [])
+}
+
+export type InputProps = Omit<TextInputProps, 'value' | 'onChangeText'> & {
+  label: string
+  value?: string
+  onChangeText?: (value: string) => void
+  isInvalid?: boolean
+  inputRef?: React.RefObject<TextInput>
+}
+
+export function createInput(Component: typeof TextInput) {
+  return function Input({
+    label,
+    placeholder,
+    value,
+    onChangeText,
+    isInvalid,
+    inputRef,
+    ...rest
+  }: InputProps) {
+    const ctx = React.useContext(Context)
+    const withinRoot = Boolean(ctx.inputRef)
+
+    const {chromeHover, chromeFocus, chromeError, chromeErrorHover} =
+      useSharedInputStyles()
+
+    if (!withinRoot) {
+      return (
+        <Root isInvalid={isInvalid}>
+          <Input
+            label={label}
+            placeholder={placeholder}
+            value={value}
+            onChangeText={onChangeText}
+            isInvalid={isInvalid}
+            {...rest}
+          />
+        </Root>
+      )
+    }
+
+    const refs = mergeRefs([ctx.inputRef, inputRef!].filter(Boolean))
+
+    return (
+      <>
+        <Component
+          accessibilityHint={undefined}
+          {...rest}
+          accessibilityLabel={label}
+          ref={refs}
+          value={value}
+          onChangeText={onChangeText}
+          onFocus={ctx.onFocus}
+          onBlur={ctx.onBlur}
+          placeholder={placeholder || label}
+          placeholderTextColor={t.grey_200}
+          keyboardAppearance={'dark'}
+          hitSlop={HITSLOP_20}
+          style={[
+            a.relative,
+            a.z_20,
+            a.flex_1,
+            a.text_md,
+            a.font_bold,
+            {color: t.yellow_300, outlineWidth: 0},
+            a.px_xs,
+            {
+              // paddingVertical doesn't work w/multiline - esb
+              paddingTop: 14,
+              paddingBottom: 14,
+              lineHeight: a.text_md.fontSize * 1.1875,
+              textAlignVertical: rest.multiline ? 'top' : undefined,
+              minHeight: rest.multiline ? 80 : undefined,
+            },
+            android({
+              paddingBottom: 16,
+            }),
+          ]}
+        />
+
+        <View
+          style={[
+            a.z_10,
+            a.absolute,
+            a.inset_0,
+            a.rounded_sm,
+            {borderColor: t.grey_400, borderWidth: 2},
+            ctx.hovered ? chromeHover : {},
+            ctx.focused ? chromeFocus : {},
+            ctx.isInvalid || isInvalid ? chromeError : {},
+            (ctx.isInvalid || isInvalid) && (ctx.hovered || ctx.focused)
+              ? chromeErrorHover
+              : {},
+          ]}
+        />
+      </>
+    )
+  }
+}
+
+export const Input = createInput(TextInput)
+
+export function LabelText({
+  nativeID,
+  children,
+}: React.PropsWithChildren<{nativeID?: string}>) {
   return (
-    <View>
-      <Text>Email</Text>
-      <TextInput {...rest} placeholder={placeholder} />
-      <Text style={{color: 'red'}}>{props.error}</Text>
-    </View>
+    <Text
+      nativeID={nativeID}
+      style={[a.text_sm, a.font_bold, a.mb_sm, {color: t.grey_400}]}>
+      {children}
+    </Text>
   )
 }

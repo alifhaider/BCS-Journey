@@ -23,12 +23,12 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView
       style={{flex: 1, backgroundColor: Colors.brand.PassionPlum}}>
-        <SafeAreaView
-          style={{height: '100%', backgroundColor: Colors.brand.PassionPlum}}>
-          <ScrollView contentContainerStyle={{height: '100%'}}>
-            <Slot />
-          </ScrollView>
-        </SafeAreaView>
+      <SafeAreaView
+        style={{height: '100%', backgroundColor: Colors.brand.PassionPlum}}>
+        <ScrollView contentContainerStyle={{height: '100%'}}>
+          <Slot />
+        </ScrollView>
+      </SafeAreaView>
     </GestureHandlerRootView>
   )
 }

@@ -1,11 +1,15 @@
 import * as React from 'react'
-import TextInput from '@/components/TextField'
 import { View} from 'react-native'
 import Button from '@/components/Button'
-import { atoms as a } from '@/alf/atoms'
+import {atoms as a} from '@/alf/atoms'
 import {color as t} from '@/alf/tokens'
+import {Input} from '@/components/TextField'
 
 export default function Login() {
+
+
+
+
   return (
     <View
       style={[
@@ -16,22 +20,21 @@ export default function Login() {
         a.gap_lg,
         a.shadow_md,
         a.w_full,
-        {borderColor: t.blue_300}
-      ]
-      }>
-      <TextInput
+        {borderColor: t.blue_600},
+      ]}>
+      <Input
+        label="Email"
         placeholder="Enter email"
         accessibilityLabel="input"
         accessibilityHint="email"
       />
-      <TextInput
+      <Input
+        label="Password"
         placeholder="Enter password"
         accessibilityLabel="input"
         accessibilityHint="password"
       />
-      <Button title="Login" />
-
-
+      <Button label="Login" />
     </View>
   )
 }

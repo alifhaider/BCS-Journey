@@ -1,12 +1,43 @@
-import {View, Text} from 'react-native'
-import React from 'react'
+import * as React from 'react'
+import {View} from 'react-native'
+import Button from '@/components/Button'
+import {atoms as a} from '@/alf/atoms'
+import {color as t} from '@/alf/tokens'
+import {Input} from '@/components/TextField'
 
-const Resgister = () => {
+export default function Register() {
   return (
-    <View>
-      <Text>Resgister</Text>
+    <View
+      style={[
+        a.border,
+        a.rounded_md,
+        a.px_2xl,
+        a.py_4xl,
+        a.gap_lg,
+        a.shadow_md,
+        a.w_full,
+        {borderColor: t.blue_600},
+      ]}>
+      <Input
+        label="Email"
+        placeholder="Enter email"
+        accessibilityLabel="input"
+        accessibilityHint="email"
+      />
+      <Input
+        label="Password"
+        placeholder="Enter password"
+        accessibilityLabel="input"
+        accessibilityHint="password"
+      />
+
+      <Input
+        label="Confirm Password"
+        placeholder="Confirm password"
+        accessibilityLabel="input"
+        accessibilityHint="password"
+      />
+      <Button label="Signup" />
     </View>
   )
 }
-
-export default Resgister

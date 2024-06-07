@@ -1,4 +1,4 @@
-import { isAndroid, isIOS, isNative, isWeb } from '@/platform/detection'
+import {isAndroid, isIOS, isNative, isWeb} from '@/platform/detection'
 
 export function web(value: any) {
   if (isWeb) {

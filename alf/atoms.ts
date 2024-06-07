@@ -1,16 +1,16 @@
-import { Platform, StyleSheet } from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 
 import * as tokens from '@/alf/tokens'
 
 import hairlineWidth = StyleSheet.hairlineWidth
-import { native, web } from './utl/platform'
+import {native, web} from './util/platform'
 
 export const atoms = {
   /*
    * Positioning
    */
   fixed: {
-    position: Platform.select({ web: 'fixed', native: 'absolute' }) as 'absolute',
+    position: Platform.select({web: 'fixed', native: 'absolute'}) as 'absolute',
   },
   absolute: {
     position: 'absolute',

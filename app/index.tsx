@@ -1,26 +1,18 @@
 import * as React from 'react'
-import {styles} from '@/styles'
 import {Text, View} from 'react-native'
 import Button from '@/components/Button'
+import {atoms as a} from '@/alf/atoms'
+import {color as t} from '@/alf/tokens'
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-      }}>
-      <Text style={styles.headerLarge}>Welcome to BCS-Mania</Text>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 20,
-        }}>
-        
-        <Button title="Login" href="/login" />
-        <Button title="Register" href="/register" />
+    <View style={[a.flex_1, a.align_center]}>
+      <Text style={[a.font_bold, a.text_5xl, {color: t.green_400}]}>
+        Welcome to BCS-Mania
+      </Text>
+      <View style={[a.flex_1, a.align_center, a.justify_center, a.gap_xl]}>
+        <Button label="Login" href="/login" />
+        <Button label="Register" href="/register" />
       </View>
     </View>
   )

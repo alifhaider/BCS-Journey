@@ -20,7 +20,6 @@ export const color = {
   grey_200: '#D3D3D3',
 } as const
 
-
 export const space = {
   _2xs: 2,
   xs: 4,
@@ -66,7 +65,6 @@ export const fontWeight = {
   semibold: '500',
   bold: '600',
 } as const
-
 
 export type Color = keyof typeof color
 export type Space = keyof typeof space
