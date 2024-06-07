@@ -13,6 +13,10 @@ export default function Index() {
       <View style={[a.flex_1, a.align_center, a.justify_center, a.gap_xl]}>
         <Button label="Login" href="/login" />
         <Button label="Register" href="/register" />
+
+        <Button label='Go to Home' href='/home' />
+
+
       </View>
     </View>
   )

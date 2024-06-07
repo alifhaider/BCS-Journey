@@ -1,16 +1,17 @@
 import * as React from 'react'
-import {Colors} from '@/constants/Colors'
-import {AntDesign, MaterialIcons} from '@expo/vector-icons'
+import {AntDesign} from '@expo/vector-icons'
 import {Tabs} from 'expo-router'
-import {StyleSheet} from 'react-native'
+import {atoms as a, tokens as t} from '@/alf'
 
 export default function AppRootLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.brand.CirtusBurst,
+        tabBarActiveTintColor: t.color.yellow_500,
         tabBarShowLabel: false,
-        tabBarInactiveTintColor: Colors.brand.AzureRadiance,
+        tabBarInactiveTintColor: t.color.blue_300,
+        tabBarActiveBackgroundColor: t.color.blue_600,
+        tabBarInactiveBackgroundColor: t.color.blue_600,
       }}>
       {tabItems.map(tabItem => (
         <Tabs.Screen
@@ -27,16 +28,6 @@ export default function AppRootLayout() {
   )
 }
 
-const styles = StyleSheet.create({
-  tabIcon: {
-    width: 20,
-    height: 20,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
-
 type TabIconProps = {
   color: string
   focused?: boolean
@@ -47,7 +38,7 @@ const tabItems = [
     name: 'home',
     href: '/home',
     icon: ({color}: TabIconProps) => (
-      <AntDesign name="home" size={24} style={styles.tabIcon} color={color} />
+      <AntDesign name="home" size={24} style={[{width: 20, height: 20}, a.justify_center, a.align_center]} color={color} />
     ),
   },
   {
@@ -55,7 +46,7 @@ const tabItems = [
     href: '/quests',
     icon: ({color}: TabIconProps) => (
       <AntDesign
-        style={styles.tabIcon}
+        style={[{width: 20, height: 20}, a.justify_center, a.align_center]}
         size={24}
         name="CodeSandbox"
         color={color}
@@ -66,7 +57,7 @@ const tabItems = [
     name: 'profile',
     href: '/profile',
     icon: ({color}: TabIconProps) => (
-      <AntDesign style={styles.tabIcon} size={24} name="user" color={color} />
+      <AntDesign style={[{width: 20, height: 20}, a.justify_center, a.align_center]} size={24} name="user" color={color} />
     ),
   },
 
@@ -74,21 +65,21 @@ const tabItems = [
     name: 'leaderboard',
     href: '/leaderboard',
     icon: ({color}: TabIconProps) => (
-      <AntDesign style={styles.tabIcon} size={24} name="slack" color={color} />
+      <AntDesign style={[{width: 20, height: 20}, a.justify_center, a.align_center]} size={24} name="slack" color={color} />
     ),
   },
   {
     name: 'review',
     href: '/review',
     icon: ({color}: TabIconProps) => (
-      <AntDesign style={styles.tabIcon} size={24} name="star" color={color} />
+      <AntDesign style={[{width: 20, height: 20}, a.justify_center, a.align_center]} size={24} name="star" color={color} />
     ),
   },
   {
     name: 'feed',
     href: '/feed',
     icon: ({color}: TabIconProps) => (
-      <MaterialIcons name="developer-board" size={24} color={color} />
+      <AntDesign style={[{width: 20, height: 20}, a.justify_center, a.align_center]} size={24} name="paperclip" color={color} />
     ),
   },
 ]
