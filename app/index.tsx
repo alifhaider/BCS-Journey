@@ -14,9 +14,7 @@ export default function Index() {
         <Button label="Login" href="/login" />
         <Button label="Register" href="/register" />
 
-        <Button label='Go to Home' href='/home' />
-
-
+        <Button label="Go to Home" href="/home" />
       </View>
     </View>
   )

@@ -1,14 +1,12 @@
-import {View} from 'react-native'
-import React from 'react'
-import {Slot} from 'expo-router'
-import {atoms as a} from '@/alf/atoms'
+import * as React from 'react';
+import { Slot, Stack } from 'expo-router';
 
-const AuthLayout = () => {
+export default function AuthLayout() {
   return (
-    <View style={[a.px_2xl, a.flex_1, a.justify_center, a.align_center]}>
-      <Slot />
-    </View>
-  )
-}
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-export default AuthLayout
+      <Slot />
+    </Stack>
+  );
+}

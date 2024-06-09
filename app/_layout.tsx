@@ -9,7 +9,7 @@ import {SafeAreaView} from 'react-native-safe-area-context'
 
 SplashScreen.preventAutoHideAsync()
 
-export default function RootLayout() {
+export default function AppRootLayout() {
   const [fontsLoaded, error] = useFonts({
     'Roboto-Regular': require('@/assets/fonts/SpaceMono-Regular.ttf'),
   })

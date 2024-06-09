@@ -3,13 +3,19 @@ import React from 'react'
 import {Link} from 'expo-router'
 import {atoms as a, tokens as t} from '@/alf'
 
+type ButtonVariant = 'primary' | 'map'
+
 type ButtonProps = {
   href?: string
   onPress?: () => void
   label: string
+  variant?: ButtonVariant
 }
 
-const Button = ({onPress, label, href}: ButtonProps) => {
+const Button = ({onPress, label, href, variant = 'primary'}: ButtonProps) => {
+  if (variant === 'map') {
+  }
+
   if (href) {
     return (
       <Link
@@ -29,7 +35,7 @@ const Button = ({onPress, label, href}: ButtonProps) => {
           a.rounded_sm,
         ]}
         href={href}
-        accessibilityRole="link">
+        role="link">
         <Text style={[a.text_xl, a.font_bold, {color: t.color.white_600}]}>
           {label}
         </Text>
@@ -54,7 +60,8 @@ const Button = ({onPress, label, href}: ButtonProps) => {
         a.rounded_sm,
       ]}
       onPress={onPress}
-      accessibilityRole="button">
+      accessibilityRole='button'
+      role="button">
       <Text style={[a.text_xl, a.font_bold, {color: t.color.white_600}]}>
         {label}
       </Text>

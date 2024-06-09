@@ -17,7 +17,8 @@ export function Collapsible({
   return (
     <ThemedView>
       <TouchableOpacity
-        accessibilityRole="button"
+        role="button"
+        accessibilityRole='button'
         style={styles.heading}
         onPress={() => setIsOpen(value => !value)}
         activeOpacity={0.8}>

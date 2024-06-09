@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {View} from 'react-native'
+import {Text, View} from 'react-native'
 import Button from '@/components/Button'
 import {atoms as a} from '@/alf/atoms'
 import {color as t} from '@/alf/tokens'
@@ -15,9 +15,15 @@ export default function Register() {
         a.py_4xl,
         a.gap_lg,
         a.shadow_md,
+
         a.w_full,
-        {borderColor: t.blue_600},
+        {borderColor: t.white_600, maxWidth: 400},
       ]}>
+      <Text
+        style={[a.text_4xl, a.font_bold, a.underline, {color: t.black_800}]}>
+        Sign up for an account!
+      </Text>
+
       <Input
         label="Email"
         placeholder="Enter email"
