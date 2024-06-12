@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {AntDesign} from '@expo/vector-icons'
-import {Tabs, useSegments} from 'expo-router'
+import {AntDesign, FontAwesome5} from '@expo/vector-icons'
+import {Tabs} from 'expo-router'
 import {atoms as a, tokens as t} from '@/alf'
 import {BlurView} from 'expo-blur'
 
@@ -15,8 +15,6 @@ function BlurBackground() {
 }
 
 export default function TabLayout() {
-  const segments = useSegments()
-  console.log(segments)
   return (
     <>
       <Tabs
@@ -25,10 +23,10 @@ export default function TabLayout() {
           tabBarShowLabel: false,
           tabBarBackground: BlurBackground,
           tabBarStyle: [
-            a.border_0, a.absolute,
+            a.border_0,
+            a.absolute,
             {backgroundColor: 'transparent', borderTopWidth: 0, elevation: 0},
           ],
-          
         }}>
         {tabItems.map(tabItem => (
           <Tabs.Screen
@@ -42,9 +40,13 @@ export default function TabLayout() {
           />
         ))}
 
-        <Tabs.Screen name="programs" options={{
-          headerShown: false,
-          href: null}} />
+        <Tabs.Screen
+          name="sub/[id]"
+          options={{
+            headerShown: false,
+            href: null,
+          }}
+        />
       </Tabs>
     </>
   )
@@ -60,8 +62,8 @@ const tabItems = [
     name: 'home',
     href: '/home',
     icon: ({color}: TabIconProps) => (
-      <AntDesign
-        name="home"
+      <FontAwesome5
+        name="puzzle-piece"
         size={24}
         style={[{width: 20, height: 20}, a.justify_center, a.align_center]}
         color={color}

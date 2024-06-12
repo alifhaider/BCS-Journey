@@ -1,0 +1,85 @@
+
+{
+    "questions": [
+        {
+            "question": "What is the capital of India?",
+            "options": ["Mumbai", "Delhi", "Kolkata", "Chennai"],
+            "answer": "Delhi",
+            "tip": "This is the capital of India",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of France?",
+            "options": ["Mumbai", "Paris", "Kolkata", "Chennai"],
+            "answer": "Paris",
+            "tip": "This is the capital of France",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of USA?",
+            "options": ["Washington DC", "New York", "Los Angeles", "Chicago"],
+            "answer": "Washington DC",
+            "tip": "This is the capital of USA",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of Australia?",
+            "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+            "answer": "Canberra",
+            "tip": "This is the capital of Australia",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of Japan?",
+            "options": ["Tokyo", "Osaka", "Kyoto", "Hiroshima"],
+            "answer": "Tokyo",
+            "tip": "This is the capital of Japan",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of China?",
+            "options": ["Beijing", "Shanghai", "Guangzhou", "Shenzhen"],
+            "answer": "Beijing",
+            "tip": "This is the capital of China",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of Russia?",
+            "options": ["Moscow", "Saint Petersburg", "Novosibirsk", "Yekaterinburg"],
+            "answer": "Moscow",
+            "tip": "This is the capital of Russia",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        },
+        {
+            "question": "What is the capital of Brazil?",
+            "options": ["Brasilia", "Rio de Janeiro", "Sao Paulo", "Salvador"],
+            "answer": "Brasilia",
+            "tip": "This is the capital of Brazil",
+            "metadata": {
+                "difficulty": "easy",
+                "category": "Geography"
+            }
+        }
+    ]
+}

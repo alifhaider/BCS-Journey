@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import {PropsWithChildren, useState} from 'react'
-import {StyleSheet, TouchableOpacity, useColorScheme} from 'react-native'
+import {StyleSheet, Text, TouchableOpacity, useColorScheme} from 'react-native'
 
 import {ThemedText} from '@/components/ThemedText'
 import {ThemedView} from '@/components/ThemedView'
@@ -15,7 +15,7 @@ export function Collapsible({
   const theme = useColorScheme() ?? 'light'
 
   return (
-    <ThemedView>
+    <>
       <TouchableOpacity
         role="button"
         accessibilityRole='button'
@@ -27,10 +27,10 @@ export function Collapsible({
           size={18}
           color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
         />
-        <ThemedText type="defaultSemiBold">{title}</ThemedText>
+        <Text>{title}</Text>
       </TouchableOpacity>
       {isOpen && <ThemedView style={styles.content}>{children}</ThemedView>}
-    </ThemedView>
+    </>
   )
 }
 

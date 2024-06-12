@@ -19,6 +19,7 @@ const Button = ({onPress, label, href, variant = 'primary'}: ButtonProps) => {
   if (href) {
     return (
       <Link
+        onPress={onPress}
         style={[
           a.justify_center,
           a.align_center,
@@ -60,7 +61,7 @@ const Button = ({onPress, label, href, variant = 'primary'}: ButtonProps) => {
         a.rounded_sm,
       ]}
       onPress={onPress}
-      accessibilityRole='button'
+      accessibilityRole="button"
       role="button">
       <Text style={[a.text_xl, a.font_bold, {color: t.color.white_600}]}>
         {label}

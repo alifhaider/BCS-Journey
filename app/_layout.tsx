@@ -1,11 +1,11 @@
 import * as React from 'react'
-import {Colors} from '@/constants/Colors'
 import {useFonts} from 'expo-font'
 import {Slot, SplashScreen} from 'expo-router'
 import {useEffect} from 'react'
 import {ScrollView} from 'react-native'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {atoms as a, tokens as t} from '@/alf'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -22,10 +22,9 @@ export default function AppRootLayout() {
   if (!fontsLoaded && !error) return null
   return (
     <GestureHandlerRootView
-      style={{flex: 1, backgroundColor: Colors.brand.PassionPlum}}>
-      <SafeAreaView
-        style={{height: '100%', backgroundColor: Colors.brand.PassionPlum}}>
-        <ScrollView contentContainerStyle={{height: '100%'}}>
+      style={[a.flex_1, {backgroundColor: t.color.purple_700}]}>
+      <SafeAreaView style={[a.h_full]}>
+        <ScrollView contentContainerStyle={[a.h_full]}>
           <Slot />
         </ScrollView>
       </SafeAreaView>
