@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Link, Slot, Stack} from 'expo-router'
-import { View, Text,  Pressable, Button} from 'react-native'
+import { View, Text, Button} from 'react-native'
 import {atoms as a, tokens as t} from '@/alf'
 import {AntDesign} from '@expo/vector-icons'
 import BottomSheet, {BottomSheetBackdrop,  BottomSheetView} from '@gorhom/bottom-sheet'
@@ -20,6 +20,8 @@ const Header = () => {
       ]}>
       <ProgramSelect />
 
+      <TotalXp />
+
       <View style={[a.flex_row, a.align_center, a.gap_xs]}>
         <AntDesign name="heart" size={20} color={t.color.red_300} />
         <Text style={[a.text_lg, a.font_bold, {color: t.color.red_300}]}>
@@ -31,6 +33,7 @@ const Header = () => {
 }
 
 const ProgramSelect = () => {
+  const [openBottomSheet, setOpenBottomSheet] = React.useState(false)
   const sheetRef = React.useRef<BottomSheet>(null);
   const programOptions = [
     Program.ENGLISH,
@@ -41,14 +44,17 @@ const ProgramSelect = () => {
   const snapPoints = React.useMemo(() => ['25%', '50%'], [])
 
 
-  const handleBottomSheetCollapse = () => sheetRef.current?.collapse()
+  const handleBottomSheetCollapse = React.useCallback(() => {
+    setOpenBottomSheet(true)
+    sheetRef.current?.expand()
+  }
+    , [])
   const handleCloseSheet = React.useCallback(() => {
     sheetRef.current?.close()
   }
     , [])
   
   const renderBackdrop = React.useCallback((props: any) => (
-    console.log("rendering backdrop"),
     <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} pressBehavior="close" />
   ), [])
 
@@ -67,14 +73,15 @@ const ProgramSelect = () => {
     ),
     [handleCloseSheet],
   )
-  // const [isOpen, setIsOpen] = React.useState(false)
-  // const [selectedProgram, setSelectedProgram] = React.useState(programOptions[0])
   return (
     <>
       <View>
         <Button title={Program.ENGLISH} onPress={handleBottomSheetCollapse} />
+        {openBottomSheet && (
+
         <BottomSheet
           ref={sheetRef}
+          index={-1}
           snapPoints={snapPoints}
           backgroundStyle={{ backgroundColor: t.color.yellow_300 }}
           handleIndicatorStyle={{ backgroundColor: t.color.black_800 }}
@@ -86,8 +93,25 @@ const ProgramSelect = () => {
             {programOptions.map(renderItem)}
           </BottomSheetView>
         </BottomSheet>
+        )}
       </View>
     </>
+  )
+}
+
+function TotalXp() {
+  const totalXp = 100
+  const currentXp = 65
+
+  return (
+    <View style={[a.flex_row, a.gap_sm, a.align_center, a.relative, a.justify_center, a.rounded_full, { backgroundColor: t.color.grey_400, width: 150 }]}>
+      <View style={[a.absolute, a.inset_0, a.rounded_full, { backgroundColor: t.color.red_300, width: `${currentXp}%` }]} />
+      <AntDesign name="star" size={16} color={t.color.yellow_300} />
+
+      <Text style={[a.text_lg, a.font_bold, { color: t.color.yellow_300 }]}>
+        { currentXp}/{totalXp}
+      </Text>
+    </View>
   )
 }
 
